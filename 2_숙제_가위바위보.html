@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보</title>
+</head>
+<body>
+    <h2>가위바위보 게임</h2>
+    <script>
+        'use strict'
+        while(true){
+            
+            let user_no = 0;
+            const user = prompt('가위 바위 보를 입력하세요.')
+            let rand_no = Math.floor(Math.random()*3)+1
+            console.log(rand_no);
+            let rand = '';
+
+            if(user != '가위' && user != '바위' && user != '보' ){
+                console.log(`다시 입력해주세요. User : ${user}`);
+                continue ;
+            } 
+            switch (user) {
+                case '가위' : 
+                user_no = 1;
+                break;
+                
+                case '바위' : 
+                user_no = 2;
+                break;
+                
+                case '보' : 
+                user_no = 3;
+                break;
+                
+            }
+            switch (rand_no) {
+                case 1 : 
+                rand = '가위';
+                break;
+
+                case 2 : 
+                rand = '바위';
+                break;
+
+                case 3 : 
+                rand = '보';  
+                break;
+
+            }
+
+            if(rand_no == 3 && user_no == 1) user_no += 3;
+            if(rand_no == 1 && user_no == 3) rand_no += 3;
+            
+
+
+
+            if(rand_no < user_no){
+                console.log(`이겼습니다. computer  : ${rand}, User : ${user}`);
+                break;
+            }else{
+                console.log(`졌습니다. computer  : ${rand}, User : ${user}`);
+            }
+            
+
+
+        }
+        
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또번호</title>
+</head>
+<body>
+    <h2>로또번호</h2>
+    <script>
+        'use strict';
+        
+            
+            let lotto_no = [];
+            let lotto_no1 = [];
+            let bonus_no = 0;
+            let same_no =0;
+            let min = 46, min_sto = 0;
+
+            for(let i=0; i < 6; i++ ){
+                lotto_no[i] = Math.floor(Math.random()*45)+1;
+                // 같은수확인 시작
+                for(let j=0; j < i ; j++){
+                    if(lotto_no[j] == lotto_no[i]){
+                        lotto_no[i] = Math.floor(Math.random()*45)+1;
+                    }
+                }
+                // 같은수 확인 끝
+            }
+            bonus_no =  Math.floor(Math.random()*45)+1;
+            while(true){
+                for(let i=0; i < 6; i++ ){
+                    if(bonus_no == lotto_no[i]){
+                        bonus_no = Math.floor(Math.random()*45)+1;
+                        same_no = 1;
+                    }
+                }
+                if(same_no != 1){
+                   
+                    break;
+                }else{
+                    // console.log(same_no);
+                    same_no = 0;
+                }
+
+            }
+            
+            
+            for(let i = 0, c= 0; i<lotto_no.length; i++,c++) {           
+                    min = lotto_no[i]
+                for(let j = 0; j< lotto_no.length; j++){
+                    if(min >= lotto_no[j] ){
+                        min = lotto_no[j]
+                        min_sto = j;
+                    }
+                }
+                lotto_no1.push(min);
+                // console.log(lotto_no);
+                lotto_no[min_sto] = 100;                
+                //   console.log(`min : ${min}, lotto_no : ${lotto_no[i]}, min_sto : ${min_sto}, i : ${i}`);
+            }
+          
+            console.log(`이번주 로또 당첨 예측 번호는 ${lotto_no1} 입니다.`)
+          
+            
+            
+            
+      
+
+        
+
+    </script>
+</body>
+</html>

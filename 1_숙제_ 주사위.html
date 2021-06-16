@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주사위 게임</title>
+</head>
+<body>
+    <h2>주사위 게임</h2>
+    <script>
+        'use strict';
+        while(true){
+            const user_no = Number(prompt(' 주사위 숫자를 맞춰 보세요.(1~6)까지 입력'))
+            
+            let rand = Math.floor(Math.random()*6)+1
+            console.log(rand)
+
+            if(user_no > 6 || user_no <= 0 ){
+                console.log(`다시 입력해주세요. User : ${user_no}`);
+                continue;
+            } 
+            
+            if(rand == user_no){
+                console.log(`맞췄습니다. computer no : ${rand}, User : ${user_no}`);
+                break;
+            }else{
+                console.log(`틀렸습니다. computer no : ${rand}, User : ${user_no}`);
+            }
+            
+
+
+        }
+        
+        
+        
+
+    </script>
+</body>
+</html>
