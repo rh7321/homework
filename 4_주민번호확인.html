@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주민번호 확인</title>
+</head>
+<body>
+  <h2>주민번호 검사</h2>
+    <script>
+      const per_no = prompt('주민번호를 입력하세요.');
+      
+      
+      if(per_no != null){
+        let per_no_length = per_no.length;
+        let per_arr = [];
+        let per_arr_result = 0;
+        let last_no = 0;
+
+
+
+        console.log(isNaN(per_no));
+
+        if(per_no_length == 13 && !isNaN(per_no) ){
+
+
+
+            for(let i = 0; i < per_no_length; i++){
+              per_arr[i] = per_no.substr(i,1);
+
+            }
+
+            console.log(per_arr);
+
+            last_no = per_arr[per_no_length-1];
+            console.log(last_no);
+
+            per_arr.pop();
+
+            for(let x in per_arr){
+               let i = Number(x)+2;
+                if(i>9){
+                  i = i-8;
+                }
+                per_arr_result += (i * Number(per_arr[x]));
+                //    console.log(`i값은 : ${i}, x값은 : ${x}, per_arr[${x}] : ${per_arr[x]},(i * Number(per_arr[x])) : ${(i * Number(per_arr[x]))},결과값 : ${per_arr_result}`);
+              }
+
+            per_arr_result = per_arr_result%11;
+
+            //  console.log(per_arr_result);
+
+            per_arr_result = 11-per_arr_result
+
+            //  console.log(per_arr_result);
+
+            if(per_arr_result > 9){
+              per_arr_result =  per_arr_result%10
+            }
+            //  console.log(per_arr_result);
+
+            console.log(`last_no : ${last_no}, per_arr_result : ${per_arr_result}`);
+
+            if(last_no == per_arr_result){
+                alert('확인 되었습니다.');
+            }else{
+                alert('잘못된 주민번호입니다. 다시 확인하시고 입력 하세요.')
+            }
+
+        }else{
+            alert("확인하시고 다시 입력하세요.")
+        }
+    }else{
+      alert("주민번호를 입력하세요.")
+    }
+    </script>
+</body>
+</html>
