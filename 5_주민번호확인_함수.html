@@ -15,24 +15,33 @@
         let per_arr = [];
         let last_no = 0,check_no = 0;
         if(per_no != null){
+            // 13자리 확인, 문자 포함 및 주민번호 배열에 정렬 
             per_arr = perToarr(per_no)
+            
+            if(per_arr == "faild"){
+            alert("확인하시고 다시 입력해 주세요.")
+           
+            
+            }else{
+                last_no = per_arr[(per_arr.length)-1]
+                per_arr.pop();
+                // 주민번호 확인에 필요한 계산
+                check_no = check_per_no(per_arr);
+                
+                if(last_no == check_no ){
+                    alert('확인 되었습니다.');
+                }else{
+                    alert('잘못된 주민번호입니다. 다시 확인하시고 입력 하세요.')
+                }
+
+            }
         }else{
             alert("주민번호를 입력하세요.")
         }
 
-        if(per_arr == "faild"){
-            alert("확인하시고 다시 입력해 주세요.")
-        }else{
-            last_no = per_arr[(per_arr.length)-1]
-            per_arr.pop();
-            check_no = check_per_no(per_arr);
-        }
+       
 
-        if(last_no == check_no){
-                alert('확인 되었습니다.');
-            }else{
-                alert('잘못된 주민번호입니다. 다시 확인하시고 입력 하세요.')
-            }
+        
 
 
         
