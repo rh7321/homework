@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주민번호검사</title>
+    <script src="./js/Per_no.js"></script>
+</head>
+<body>
+    <h2>주민번호 검사</h2>
+    <script>
+        'use strict';
+        const per_no = prompt('주민번호를 입력하세요.');
+        let per_arr = [];
+        let last_no = 0,check_no = 0;
+        if(per_no != null){
+            per_arr = perToarr(per_no)
+        }else{
+            alert("주민번호를 입력하세요.")
+        }
+
+        if(per_arr == "faild"){
+            alert("확인하시고 다시 입력해 주세요.")
+        }else{
+            last_no = per_arr[(per_arr.length)-1]
+            per_arr.pop();
+            check_no = check_per_no(per_arr);
+        }
+
+        if(last_no == check_no){
+                alert('확인 되었습니다.');
+            }else{
+                alert('잘못된 주민번호입니다. 다시 확인하시고 입력 하세요.')
+            }
+
+
+        
+    </script>
+</body>
+</html>

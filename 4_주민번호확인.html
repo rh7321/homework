@@ -9,6 +9,7 @@
 <body>
   <h2>주민번호 검사</h2>
     <script>
+      'use strict';
       const per_no = prompt('주민번호를 입력하세요.');
       
       
@@ -20,7 +21,7 @@
 
 
 
-        console.log(isNaN(per_no));
+        // console.log(isNaN(per_no));
 
         if(per_no_length == 13 && !isNaN(per_no) ){
 
