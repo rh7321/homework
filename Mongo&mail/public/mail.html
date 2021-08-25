@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메일보내기</title>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    
+    </script>
+    <script src="moment.min.js"></script>
+    <script>
+        $(function(){
+            const curDate = moment().format('YYYY-MM-DD HH:mm');
+            $('#createDate').attr('value', curDate);
+            $('#photoInput').change(function(){
+                readURL(this);  
+            });
+        });
+        function readURL(input){
+            if(input.files && input.files[0]){
+                const reader = new FileReader();
+                reader.onload = function(e){
+                    $('#photoOutput').attr('src',e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="/mail" method="post" enctype="multipart/form-data">
+    <p>현재 시간 : <input type="text" name="createDate" id="createDate"></p>
+    <p>받는 아이디 : <input type="text" name="rec_id"></p>
+    <p>받는 이메일 : <input type="text" name="rec_email"></p>
+    <p>제목 : <input type="text" name="e_title"></p>
+    <p>내용</p>
+    <p><textarea name="e_body" id="" cols="40" rows="5"></textarea></p>
+    <p>이미지 :  <input type="file" name="photo" id="photoInput"></p>
+    <p><img src="" id="photoOutput" width="200" alt=""></p>
+    <input type="submit" value="확인">
+    </form>
+</body>
+</html>
